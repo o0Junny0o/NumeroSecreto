@@ -31,8 +31,7 @@ public class MainActivity extends AppCompatActivity {
     public void crianumero (){
         Random rand = new Random();
         n = rand.nextInt(101);
-        TextView textnum = findViewById(R.id.numero);
-        textnum.setText(n + "");
+
     }
     public void dadica(View view) {
         if (n % 2 == 0){
@@ -67,23 +66,34 @@ public class MainActivity extends AppCompatActivity {
 
         }else if(numpalp != n && numpalp < n){
             tentativa ++;
+            atualizarContadorTentativas();
 
             ImageView visup = findViewById(R.id.up);
             visup.setVisibility(view.VISIBLE);
 
             ImageView visdown = findViewById(R.id.down);
             visdown.setVisibility(view.INVISIBLE);
+
         }else {
             tentativa ++;
+            atualizarContadorTentativas();
 
             ImageView visdown = findViewById(R.id.down);
             visdown.setVisibility(view.VISIBLE);
 
             ImageView visup = findViewById(R.id.up);
             visup.setVisibility(view.INVISIBLE);
+
+
         }
 
     }
+
+    private void atualizarContadorTentativas() {
+        TextView qntent = findViewById(R.id.textnumtent);
+        qntent.setText(tentativa + "");
+    }
+
 
     public void reiniciajogo(View view) {
         crianumero();
